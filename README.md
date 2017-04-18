@@ -29,6 +29,8 @@ The example below will render a record from a controller and stream it to the br
 ```php
 <?php namespace MyVendor\MyPlugin\Controllers;
 
+use File;
+use Twig;
 use Response;
 use SnappyPDF;
 use Backend\Classes\Controller;
