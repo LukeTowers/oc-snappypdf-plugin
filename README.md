@@ -12,7 +12,7 @@ To install from [the repository](https://github.com/luketowers/oc-snappypdf-plug
 
 # Configuration
 
-The main configuration values that you may wish to change would be the paths to the executable binaries for `wkhtmltopdf` and `wkhtmltoimage`. These binaries are pulled into **plugins/luketowers/snappypdf/vendor/bin** by default (when installing from the marketplace) and the default configuration reflects this. Also supported by default is installing from the marketplace (where the binaries will be located in your project's **vendor/bin**).
+The main configuration values that you may wish to change would be the paths to the executable binaries for `wkhtmltopdf` and `wkhtmltoimage`. These binaries are pulled into **plugins/luketowers/snappypdf/vendor/bin** by default (when installing from the marketplace) and the default configuration reflects this. Also supported by default is installing by cloning the [repository](https://github.com/luketowers/oc-snappypdf-plugin) and loading the dependencies with `composer update` (where the binaries will be located in your project's **vendor/bin**).
 
 If you need to change the path used to locate those binaries, then you have a few options. If you are already using [`.env` files for environment level configuration](http://octobercms.com/docs/setup/configuration#environment-config-extended) then you can simply add `SNAPPY_PDF_BINARY` and `SNAPPY_IMAGE_BINARY` with their respective paths to your `.env` file and call it a day. 
 
