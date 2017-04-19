@@ -22,7 +22,7 @@ If you are not using `.env` files, or you need to change a configuration value o
 
 When using this plugin, it is highly recommended that you [add a dependency on it](http://octobercms.com/docs/plugin/registration#dependency-definitions) to the plugin you are using it from. 
 
-In order to use the libraries provided by this plugin, simply import them with `use` statements at the top of your PHP files.
+In order to use the libraries provided by this plugin (`SnappyPDF` and `SnappyImage`), simply import them with `use` statements at the top of your PHP files.
 
 The example below will render a record from a controller and stream it to the browser for downloading or viewing.
 
