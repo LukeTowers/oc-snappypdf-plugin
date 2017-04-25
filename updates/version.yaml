@@ -1,1 +1,2 @@
 1.0.1: First version of SnappyPDF
+1.0.2: Fixed one of the alternative locations the wkhtmltopdf binaries could be loaded from

@@ -143,8 +143,8 @@ class Plugin extends PluginBase
         $potentialSources = [
             $pluginVendorDir . $binPath,
             $pluginVendorDir . "$binaryBasename/$binPath",
-            base_path('vendor/' . $binPath),
-            base_path("$binaryBasename/$binPath"),
+            base_path("vendor/$binPath"),
+            base_path("vendor/$binaryBasename/$binPath"),
         ];
         
         foreach ($potentialSources as $path) {
