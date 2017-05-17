@@ -168,7 +168,7 @@ class Plugin extends PluginBase
             // Attempt to make the path executable and clear the stat cache for the path for checking again
             // TODO: Look into using fileperms() to dynamically reassigning permissions to only add +x to the user permission
             chmod($path, 0764);
-            clearstatcache(true, $path)
+            clearstatcache(true, $path);
         }
         return is_executable($path);
     }
