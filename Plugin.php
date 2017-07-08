@@ -113,7 +113,7 @@ class Plugin extends PluginBase
 
             $executable = Config::get($binaryPathConfigKey);
             if (!$this->checkPathExecutable($executable)) {
-                throw new \Exception(sprintf("The %s binary is not executable. The htmlTo%s library cannot be used.", $executable, strtoupper($component)));
+                throw new \Exception(sprintf("The %s binary is not executable so the htmlTo%s library cannot be used. Please change the configuration to point to an executable version of the binary or make the binary executable by running: chmod 764 %s", $executable, strtoupper($component), $executable));
             }
         }
     }
