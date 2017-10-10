@@ -3,7 +3,7 @@
     "type": "october-plugin",
     "description": "SnappyPDF integration for OctoberCMS",
     "homepage": "https://github.com/LukeTowers/oc-snappypdf-plugin",
-    "keywords": ["october", "octobercms", "pdf", "barryvdh/laravel-snappy",  "wkhtmltopdf", "wkhtmltoimage"],
+    "keywords": ["october", "octobercms", "pdf", "barryvdh", "laravel-snappy",  "wkhtmltopdf", "wkhtmltoimage"],
     "license": "MIT",
     "authors": [
         {
