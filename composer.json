@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "5.1.x",
+        "composer/installers": "~1.0",
 
         "h4cc/wkhtmltopdf-i386": "0.12.*",
         "h4cc/wkhtmltoimage-i386": "0.12.*",
@@ -21,6 +21,5 @@
         "h4cc/wkhtmltopdf-amd64": "0.12.*",
 
         "barryvdh/laravel-snappy": "0.*"
-    },
-    "minimum-stability": "dev"
+    }
 }

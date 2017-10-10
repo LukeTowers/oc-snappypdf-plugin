@@ -10,6 +10,8 @@ To install from the backend, go to **Settings -> Updates & Plugins -> Install Pl
 
 To install from [the repository](https://github.com/luketowers/oc-snappypdf-plugin), clone it into **plugins/luketowers/snappypdf** and then run `composer update` from your project root in order to pull in the dependencies.
 
+To install it with Composer, run `composer require luketowers/oc-snappypdf-plugin` from your project root.
+
 # Configuration
 
 The main configuration values that you may wish to change would be the paths to the executable binaries for `wkhtmltopdf` and `wkhtmltoimage`. These binaries are pulled into **plugins/luketowers/snappypdf/vendor/bin** by default (when installing from the marketplace) and the default configuration reflects this. Also supported by default is installing by cloning the [repository](https://github.com/luketowers/oc-snappypdf-plugin) and loading the dependencies with `composer update` (where the binaries will be located in your project's **vendor/bin**).
