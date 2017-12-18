@@ -1,6 +1,9 @@
 {
     "name": "luketowers/oc-snappypdf-plugin",
     "type": "october-plugin",
+    "extra": {
+        "installer-name": "snappypdf"
+    },
     "description": "SnappyPDF integration for OctoberCMS",
     "homepage": "https://github.com/LukeTowers/oc-snappypdf-plugin",
     "keywords": ["october", "octobercms", "pdf", "barryvdh", "laravel-snappy",  "wkhtmltopdf", "wkhtmltoimage"],
