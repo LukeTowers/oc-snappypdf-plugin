@@ -85,29 +85,47 @@ class Plugin extends PluginBase
     {
         $checkComponents = [
             'pdf' => [
-                'binary_x64' => 'wkhtmltopdf-amd64',
-                'binary_x32' => 'wkhtmltopdf-i386',
+                'binary_x64'     => 'wkhtmltopdf-amd64',
+                'binary_x32'     => 'wkhtmltopdf-i386',
+                'binary_win_x64' => 'wkhtmltopdf64.exe',
+                'binary_win_x32' => 'wkhtmltopdf32.exe',
             ],
             'image' => [
-                'binary_x64' => 'wkhtmltoimage-amd64',
-                'binary_x32' => 'wkhtmltoimage-i386',
+                'binary_x64'     => 'wkhtmltoimage-amd64',
+                'binary_x32'     => 'wkhtmltoimage-i386',
+                'binary_win_x64' => 'wkhtmltopdf64.exe',
+                'binary_win_x32' => 'wkhtmltopdf32.exe',
             ]
         ];
 
         foreach ($checkComponents as $component => $options) {
+            // Ignore this component if it's disabled anyways
             if (!Config::get("snappy.$component.enabled")) {
                 continue;
             }
 
+            // Attempt to try different locations if an environment variable doesn't exist for the component
             if (empty(env('SNAPPY_' . strtoupper($component) . '_BINARY'))) {
                 $binaryPathConfigKey = 'snappy.' . $component . '.binary';
                 $binaryBasename = pathinfo(Config::get($binaryPathConfigKey), PATHINFO_BASENAME);
+
                 if (!file_exists(Config::get($binaryPathConfigKey))) {
                     Config::set($binaryPathConfigKey, $this->getBinaryPath($binaryBasename));
                 }
 
-                if (!$this->is64Bit() && ($binaryBasename === $options['binary_x64'])) {
-                    Config::set($binaryPathConfigKey, $this->getBinaryPath($options['binary_x32']));
+                // Attempt to load the binary by OS & architecture
+                if ($this->isWindows()) {
+                    if ($this->is64Bit()) {
+                        Config::set($binaryPathConfigKey, $this->getBinaryPath($options['binary_win_x64']));
+                    } else {
+                        Config::set($binaryPathConfigKey, $this->getBinaryPath($options['binary_win_x32']));
+                    }
+                } else {
+                    if ($this->is64Bit()) {
+                        Config::set($binaryPathConfigKey, $this->getBinaryPath($options['binary_x64']));
+                    } else {
+                        Config::set($binaryPathConfigKey, $this->getBinaryPath($options['binary_x32']));
+                    }
                 }
             }
 
@@ -121,11 +139,21 @@ class Plugin extends PluginBase
     /**
      * Checks the architecture of the server this plugin is being run on
      *
-     * @return bool $is64Bit
+     * @return bool
      */
     private function is64Bit()
     {
         return (PHP_INT_SIZE === 8);
+    }
+
+    /**
+     * Checks the OS of the server this plugin is being run on
+     *
+     * @return bool
+     */
+    private function isWindows()
+    {
+        return strncasecmp(PHP_OS, 'WIN', 3) == 0;
     }
 
     /**
