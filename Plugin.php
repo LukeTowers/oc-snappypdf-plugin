@@ -105,8 +105,8 @@ class Plugin extends PluginBase
             }
 
             // Attempt to try different locations if an environment variable doesn't exist for the component
+            $binaryPathConfigKey = 'snappy.' . $component . '.binary';
             if (empty(env('SNAPPY_' . strtoupper($component) . '_BINARY'))) {
-                $binaryPathConfigKey = 'snappy.' . $component . '.binary';
                 $binaryBasename = pathinfo(Config::get($binaryPathConfigKey), PATHINFO_BASENAME);
 
                 if (!file_exists(Config::get($binaryPathConfigKey))) {
@@ -127,6 +127,8 @@ class Plugin extends PluginBase
                         Config::set($binaryPathConfigKey, $this->getBinaryPath($options['binary_x32']));
                     }
                 }
+            } else {
+                Config::set($binaryPathConfigKey, env('SNAPPY_' . strtoupper($component) . '_BINARY'));
             }
 
             $executable = Config::get($binaryPathConfigKey);
