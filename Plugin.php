@@ -87,14 +87,14 @@ class Plugin extends PluginBase
             'pdf' => [
                 'binary_x64'     => 'wkhtmltopdf-amd64',
                 'binary_x32'     => 'wkhtmltopdf-i386',
-                'binary_win_x64' => 'wkhtmltopdf64.exe',
-                'binary_win_x32' => 'wkhtmltopdf32.exe',
+                'binary_win_x64' => '64bit/wkhtmltopdf.exe',
+                'binary_win_x32' => '32bit/wkhtmltopdf.exe',
             ],
             'image' => [
                 'binary_x64'     => 'wkhtmltoimage-amd64',
                 'binary_x32'     => 'wkhtmltoimage-i386',
-                'binary_win_x64' => 'wkhtmltopdf64.exe',
-                'binary_win_x32' => 'wkhtmltopdf32.exe',
+                'binary_win_x64' => '64bit/wkhtmltoimage.exe',
+                'binary_win_x32' => '32bit/wkhtmltoimage.exe',
             ]
         ];
 
