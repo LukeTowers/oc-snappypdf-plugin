@@ -99,8 +99,10 @@ class Plugin extends PluginBase
                 continue;
             }
 
+            $binaryPathConfigKey = 'snappy.' . $component . '.binary';
+
+
             if (empty(env('SNAPPY_' . strtoupper($component) . '_BINARY'))) {
-                $binaryPathConfigKey = 'snappy.' . $component . '.binary';
                 $binaryBasename = pathinfo(Config::get($binaryPathConfigKey), PATHINFO_BASENAME);
                 if (!file_exists(Config::get($binaryPathConfigKey))) {
                     Config::set($binaryPathConfigKey, $this->getBinaryPath($binaryBasename));
