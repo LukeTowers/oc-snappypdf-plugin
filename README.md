@@ -23,6 +23,14 @@ libjpeg62 \
 libxtst6
 ```
 
+If you get "The exit status code 1 says something went wrong" you may need to install the following dependencies. Pulled from https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3001#issuecomment-309673453
+
+```bash
+sudo apt-get install -y \
+libssl1.0-dev
+```
+> **NOTE:** You might not be able to install `libssl1.0-dev` in Homestead, make sure you run `sudo apt-get update` first.
+
 # Configuration
 
 The main configuration values that you may wish to change would be the paths to the executable binaries for `wkhtmltopdf` and `wkhtmltoimage`. These binaries are pulled into **plugins/luketowers/snappypdf/vendor/bin** by default (when installing from the marketplace) and the default configuration reflects this. Also supported by default is installing by cloning the [repository](https://github.com/luketowers/oc-snappypdf-plugin) and loading the dependencies with `composer update` (where the binaries will be located in your project's **vendor/bin**).
