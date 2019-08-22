@@ -23,6 +23,8 @@
         "h4cc/wkhtmltoimage-amd64": "0.12.*",
         "h4cc/wkhtmltopdf-amd64": "0.12.*",
 
+        "wemersonjanuario/wkhtmltopdf-windows": "0.12.*",
+
         "barryvdh/laravel-snappy": "~0.4"
     }
 }
