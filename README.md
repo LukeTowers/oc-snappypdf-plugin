@@ -45,6 +45,8 @@ When using this plugin, it is highly recommended that you [add a dependency on i
 
 In order to use the libraries provided by this plugin (`SnappyPDF` and `SnappyImage`), simply import them with `use` statements at the top of your PHP files.
 
+### Stream PDF to browser
+
 The example below will render a record from a controller and stream it to the browser for downloading or viewing.
 
 ```php
@@ -89,5 +91,53 @@ class Examples extends Controller
     }
 }
 ```
+
+### Return a PDF to the AJAX framework for downloading
+
+```
+<?php namespace MyVendor\MyPlugin\Controllers;
+
+use File;
+use Twig;
+use Backend;
+use Response;
+use SnappyPDF;
+use Backend\Classes\Controller;
+
+use MyVendor\MyPlugin\Models\Example as ExampleModel;
+
+class Examples extends Controller
+{
+    public function onDownloadPDF()
+    {
+        $recordId = input('recordId');
+        return Backend::redirect("myvendor/myplugin/examples/download/$recordId");
+    }
+    
+    public function download($id)
+    {
+        // Load the example record
+        $example = ExampleModel::find($id);
+
+        // Load the template
+        $template = File::get(plugins_path('myvendor/myplugin/views/example-record-template.htm'));
+
+        // Render the template
+        $renderedHtml = Twig::parse($template, [
+            'example' => $example,
+        ]);
+
+        // Render as a PDF
+        $pdf = SnappyPDF::loadHTML($renderedHtml)->output();
+
+        return Response::make($pdf, 200, [
+            'Content-Type'        => 'application/pdf',
+            'Content-Transfer-Encoding' => 'binary',
+            'Content-Disposition' => "attachment; filename=\"{$example->name}.pdf\"",
+        ]);
+    }
+}
+```
+
 
 More information on utilizing the libraries is available at the [barryvdh/laravel-snappy repository](https://github.com/barryvdh/laravel-snappy#usage) and the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt).
