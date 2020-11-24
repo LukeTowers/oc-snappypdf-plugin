@@ -166,13 +166,13 @@ class Plugin extends PluginBase
      */
     private function getBinaryPath($binaryBasename)
     {
-        $pluginVendorDir = plugins_path('luketowers/snappypdf/vendor/');
+        $pluginVendorDir = plugins_path('luketowers/snappypdf/vendor');
         $binPath = "bin/$binaryBasename";
 
         // Potential sources where the binary could be stored
         $potentialSources = [
-            $pluginVendorDir . $binPath,
-            $pluginVendorDir . "$binaryBasename/$binPath",
+            $pluginVendorDir . "/$binPath",
+            $pluginVendorDir . "/$binaryBasename/$binPath",
             base_path("vendor/$binPath"),
             base_path("vendor/$binaryBasename/$binPath"),
         ];
