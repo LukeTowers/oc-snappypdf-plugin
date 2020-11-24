@@ -3,3 +3,4 @@
 1.0.3: Fixed the wkhtmltoX binaries not being executable upon first install from the marketplace
 1.0.4: Made available on Packagist
 1.0.5: Added windows binaries
+1.0.6: Fix for v1.1.1 of October
