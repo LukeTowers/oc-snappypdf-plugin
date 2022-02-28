@@ -25,6 +25,6 @@
 
         "wemersonjanuario/wkhtmltopdf-windows": "0.12.*",
 
-        "barryvdh/laravel-snappy": "~0.4"
+        "barryvdh/laravel-snappy": "~1.0"
     }
 }
